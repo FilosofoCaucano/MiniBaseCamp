@@ -1,0 +1,45 @@
+<% content_for :title, "Proyectos" %>
+
+<h2 class="text-4xl font-inca text-andino-cielo text-center mb-8">📜 Proyectos</h2>
+
+<div class="space-y-8">
+  <% if @projects.any? %>
+    <% @projects.each do |project| %>
+      <div class="card-andino hover:shadow-2xl transition-shadow duration-300">
+        <h3 class="text-2xl font-inca text-andino-tierra mb-3">🏷️ <%= project.title %></h3>
+        <p class="text-gray-800 font-elegante mb-2">
+          <span class="text-andino-maiz font-semibold">📝 Descripción:</span>
+          <%= project.description %>
+        </p>
+        <p class="text-sm text-gray-600 italic mb-4">
+          👤 Usuario ID: <%= project.user_id %>
+        </p>
+
+        <div class="flex flex-wrap gap-4">
+          <%= link_to "🔍 Ver proyecto",
+                      project_path(project),
+                      class: "btn-andino" %>
+
+          <%= link_to "🗑 Eliminar",
+                      project_path(project),
+                      method: :delete,
+                      data: { confirm: "¿Estás seguro de eliminar este proyecto?" },
+                      class: "btn-danger" %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="card text-center">
+      <p class="text-gray-700 text-xl mb-2">🌾 No hay proyectos aún</p>
+      <p class="text-sm text-gray-500 font-elegante">
+        Comienza tu primer paso en la cordillera del desarrollo 🌄
+      </p>
+    </div>
+  <% end %>
+</div>
+
+<div class="mt-12 text-center">
+  <%= link_to "➕ Nuevo proyecto",
+              new_project_path,
+              class: "btn-andino text-lg px-6 py-3 shadow-md hover:shadow-lg" %>
+</div>

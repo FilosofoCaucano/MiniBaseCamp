@@ -1,0 +1,57 @@
+<h2 class="text-3xl font-inca text-andino-cielo mb-6">📜 Proyecto: <%= @project.title %></h2>
+
+<div class="mb-6 text-right">
+  <%= link_to "🌿 Añadir tarea a este proyecto",
+              new_project_task_path(@project),
+              class: "bg-andino-hoja text-white px-4 py-2 rounded-lg hover:bg-andino-tierra transition font-inca" %>
+</div>
+
+<table class="w-full bg-white border border-gray-300 rounded-lg shadow-md">
+  <thead class="bg-andino-tierra text-white">
+    <tr>
+      <th class="py-3 px-4 text-left">Título</th>
+      <th class="py-3 px-4 text-left">Estado</th>
+      <th class="py-3 px-4 text-left">Acción</th>
+    </tr>
+  </thead>
+  <tbody id="tasks" class="divide-y divide-gray-200">
+    <% if @project.tasks.any? %>
+      <% @project.tasks.each do |task| %>
+        <tr id="<%= dom_id(task) %>" class="hover:bg-gray-50 transition">
+          <td class="py-3 px-4"><%= task.title %></td>
+          <td class="py-3 px-4">
+            <span class="inline-flex items-center gap-1">
+              <%= task_status_icon(task.status) %>
+              <%= task.status.titleize %>
+            </span>
+          </td>
+          <td class="py-3 px-4">
+            <%= button_to next_status_label(task.status),
+                          toggle_status_project_task_path(task.project, task),
+                          method: :patch,
+                          data: { turbo_stream: true },
+                          class: "bg-andino-hoja text-white px-3 py-1 rounded hover:bg-andino-tierra transition" %>
+          </td>
+        </tr>
+        <tr class="bg-gray-50">
+          <td colspan="3" class="p-4">
+            <h5 class="text-andino-maiz font-semibold mb-2">💬 Comentarios:</h5>
+            <div id="comments_for_task_<%= task.id %>">
+              <%= render task.comments %>
+            </div>
+
+            <div id="new_comment" class="mt-4">
+              <%= render partial: "comments/form", locals: { task: task, comment: Comment.new } %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    <% else %>
+      <tr>
+        <td colspan="3" class="py-4 px-6 text-center text-gray-700">
+          No hay tareas en este proyecto.
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

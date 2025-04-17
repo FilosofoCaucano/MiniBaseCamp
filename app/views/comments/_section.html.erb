@@ -1,0 +1,9 @@
+<h5 class="mt-2">💬 Comentarios:</h5>
+
+<div id="comments_for_task_<%= task.id %>">
+  <%= render task.comments %>
+</div>
+
+<div id="new_comment">
+  <%= render partial: "comments/form", locals: { task: task, comment: Comment.new } %>
+</div>

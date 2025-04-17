@@ -1,28 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
-    <title><%= content_for(:title) || "Mini Base Camp Ruby" %></title>
+    <title><%= content_for(:title) || "Mini Basecamp Ruby" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= yield :head %>
+    <!-- Google Fonts: Cinzel Decorative & Andada Pro -->
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=Andada+Pro&display=swap", media: "all" %>
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+    <!-- Tailwind & App Styles -->
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
 
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
-
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="bg-[#fef9f3] text-gray-800 font-serif min-h-screen" style="background-image: url('/assets/textura-pergamino.png'); background-size: cover;">
+    <!-- Header -->
+    <header class="bg-andino-tierra text-white py-6 shadow-md">
+      <div class="max-w-4xl mx-auto px-6">
+        <h1 class="text-4xl font-inca tracking-wide">🏕️ Mini Basecamp Ruby</h1>
+        <p class="text-sm text-andino-maiz font-elegante">Planifica con elegancia andina ✨</p>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-6 py-10">
+      <div class="card">
+        <%= yield %>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-sm py-6 text-gray-500 mt-12">
+      <div class="max-w-4xl mx-auto px-6">
+        Hecho con ❤️ por FilósofoCaucano · 2025
+      </div>
+    </footer>
   </body>
 </html>

@@ -1,0 +1,97 @@
+/* 🌟 Tailwind Base, Components y Utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🎨 Paleta andina personalizada */
+.bg-andino-tierra { background-color: #A0522D; } /* Tierra marrón */
+.bg-andino-cielo  { background-color: #274472; } /* Azul cielo */
+.bg-andino-maiz   { background-color: #F9D342; } /* Amarillo maíz */
+.bg-andino-hoja   { background-color: #3A6351; } /* Verde hoja */
+.bg-andino-piedra { background-color: #f3f0e8; } /* Piedra clara */
+
+.text-andino-tierra { color: #A0522D; } /* Texto tierra */
+.text-andino-cielo  { color: #274472; } /* Texto azul cielo */
+.text-andino-maiz   { color: #F9D342; } /* Texto amarillo maíz */
+.text-andino-hoja   { color: #3A6351; } /* Texto verde hoja */
+
+/* 🖋️ Tipografía personalizada */
+.font-inca {
+  font-family: 'Cinzel Decorative', serif;
+}
+
+.font-elegante {
+  font-family: 'Andada Pro', serif;
+}
+
+/* 📦 Tarjetas con estilo andino */
+.card {
+  @apply bg-white rounded-xl shadow-md p-6 border border-gray-200;
+}
+
+.card-andino {
+  @apply bg-andino-piedra rounded-xl shadow-lg p-6 text-gray-800;
+}
+
+.card-header {
+  @apply bg-andino-tierra text-white py-3 px-4 rounded-t-xl;
+}
+
+.card-footer {
+  @apply bg-andino-hoja text-white py-3 px-4 rounded-b-xl;
+}
+
+/* 🌱 Íconos de estado para tareas */
+.status-pending {
+  @apply text-yellow-500;
+}
+
+.status-in-progress {
+  @apply text-blue-500;
+}
+
+.status-completed {
+  @apply text-green-500;
+}
+
+/* 📝 Botones personalizados */
+.btn-andino {
+  @apply bg-andino-hoja text-white px-4 py-2 rounded hover:bg-andino-tierra transition duration-300;
+}
+
+.btn-danger {
+  @apply bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition duration-300;
+}
+
+.btn-outline {
+  @apply border border-andino-tierra text-andino-tierra px-4 py-2 rounded hover:bg-andino-tierra hover:text-white transition duration-300;
+}
+
+/* 🌄 Fondo crema claro o texturizado */
+.bg-pergamino {
+  background-color: #fef9f3;
+}
+
+.bg-textura {
+  background-image: url('/assets/textura-pergamino.png');
+  background-size: cover;
+}
+
+/* 📐 Espaciado personalizado */
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+.mt-8 {
+  margin-top: 2rem;
+}
+
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.px-8 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}

@@ -1,0 +1,11 @@
+<tr id="<%= dom_id(task) %>">
+  <td><%= task.title %></td>
+  <td class="<%= status_class(task.status) %>"><%= task.status.titleize %></td>
+  <td>
+    <%= button_to next_status_label(task.status),
+                  toggle_status_project_task_path(task.project, task),
+                  method: :patch,
+                  data: { turbo_stream: true },
+                  class: "btn btn-sm px-2 py-1 border rounded bg-gray-100 hover:bg-gray-200" %>
+  </td>
+</tr>
